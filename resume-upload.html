@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Smart Resume Analyzer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        .container {
+            width: 500px;
+            margin: 100px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .upload-box {
+            border: 2px dashed #007bff;
+            padding: 30px;
+            margin-top: 25px;
+            border-radius: 10px;
+        }
+
+        input[type="file"] {
+            margin: 15px 0;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>AI Smart Resume Analyzer</h1>
+
+        <p>Upload your resume to analyze your skills and experience.</p>
+
+        <div class="upload-box">
+
+            <form onsubmit="uploadResume(event)">
+
+                <input
+                    type="file"
+                    id="resume"
+                    accept=".pdf,.doc,.docx"
+                    required
+                >
+
+                <br>
+
+                <button type="submit">
+                    Upload Resume
+                </button>
+
+            </form>
+
+            <div id="message"></div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function uploadResume(event) {
+
+            event.preventDefault();
+
+            const fileInput = document.getElementById("resume");
+            const message = document.getElementById("message");
+
+            if (fileInput.files.length === 0) {
+                message.innerHTML = "Please select a resume.";
+                return;
+            }
+
+            const file = fileInput.files[0];
+
+            message.innerHTML =
+                "Resume selected: " + file.name;
+        }
+    </script>
+
+</body>
+</html>
