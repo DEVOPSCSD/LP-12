@@ -1,34 +1,89 @@
 ## Project Overview
 
-This repository contains the source code and supporting files for the project.
+Smart AI Resume Analyzer is an AI-powered web application that analyzes resumes and evaluates how well they match a specific job role. It extracts important information from resumes, identifies skills, and provides feedback to help candidates improve their resumes.
 
-## Project Structure
+## Features
 
-* `backend/` – Contains backend application files and related logic.
-* `.postman/` – Contains Postman-related configuration files.
-* `postman/globals/` – Contains Postman global environment or configuration files.
+* Upload resumes through a web interface.
+* Extract resume information, including skills, education, and experience.
+* Analyze resumes for a selected job role.
+* Identify missing skills and relevant keywords.
+* Provide resume scores and improvement suggestions.
+* Display the extracted resume information in an organized format.
 
 ## Technologies Used
 
-* Git and GitHub for version control and collaboration.
-* Postman for API testing.
-* Backend technologies used in the project.
+* **Frontend:** HTML, CSS
+* **Backend:** Python, Flask
+* **AI/NLP:** Resume text processing and analysis
+* **Version Control:** Git and GitHub
+* **CI/CD:** Jenkins
+* **Containerization:** Docker
 
-## Getting Started
+## Project Structure
 
-1. Clone this repository to your local computer.
-2. Open the project folder in your preferred code editor.
-3. Review the files in the `backend/` directory.
-4. Configure the required dependencies and environment variables.
-5. Run the backend application using the instructions provided in its folder.
+```text
+smart-ai-resume-analyzer/
+├── app.py
+├── templates/
+│   ├── upload.html
+│   └── result.html
+├── uploads/
+└── README.md
+```
 
-## Collaboration
+*Note: Update this structure to match the actual files and folders in your repository.*
 
-Team members can contribute by creating branches, making changes, committing their work, and opening pull requests for review.
+## Installation and Setup
 
-## Future Improvements
+### 1. Clone the repository
 
-* Add detailed setup and installation instructions.
-* Document backend API endpoints.
-* Include testing instructions and deployment steps.
+```bash
+git clone https://github.com/DEVOPSCSD/LP-12.git
+cd LP-12
+```
+
+### 2. Install dependencies
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install flask
+```
+
+If a `requirements.txt` file is available, install the dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the application
+
+```bash
+python3 app.py
+```
+
+Open your browser and visit the local URL shown in the terminal, usually `http://127.0.0.1:5000`.
+
+## DevOps Implementation
+
+* **Git/GitHub:** Source code management and team collaboration.
+* **Jenkins:** Automates build and testing workflows.
+* **Docker:** Packages the application and its dependencies into a container.
+* **CI/CD:** Supports automated integration and delivery of application changes.
+
+## Expected Output
+
+The application accepts a resume upload, extracts relevant information, analyzes the resume, and displays results such as skills, education, experience, matching information, and suggestions for improvement.
+
+## Team Collaboration
+
+Team members contribute through Git branches, commits, issues, and pull requests. Changes can be reviewed before merging into the main branch.
+
+## Future Enhancements
+
+* Improve resume parsing and AI-based scoring.
+* Support multiple resume formats.
+* Add job-description matching and skill-gap analysis.
+* Automate application testing and deployment.
 
