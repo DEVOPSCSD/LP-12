@@ -3,20 +3,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Smart AI Resume Analyzer</title>
+    <title>Resume Analysis Result</title>
 </head>
 <body>
     <h1>Smart AI Resume Analyzer</h1>
-    <p>Upload your resume to get started.</p>
 
 ```
-<form method="POST" enctype="multipart/form-data">
-    <label>Select your resume:</label>
-    <input type="file" name="resume" accept=".pdf,.txt,.doc,.docx" required>
-    <button type="submit">Upload Resume</button>
-</form>
+<h2>Resume Uploaded Successfully!</h2>
+
+<p>Your resume file has been uploaded.</p>
+<p><strong>File name:</strong> {{ filename }}</p>
+
+<p>Your resume is ready for analysis.</p>
+
+<a href="/">Upload Another Resume</a>
 ```
 
 </body>
 </html>
-
