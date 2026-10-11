@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Resume Information</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background-color: #f4f6f8;
+            padding: 40px;
+        }
+
+        .container {
+            width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            color: #007bff;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 17px;
+        }
+
+        li {
+            margin: 8px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Resume Information</h1>
+
+    <h2>Personal Information</h2>
+
+    <p>
+        <strong>Name:</strong>
+        {{ information.name }}
+    </p>
+
+    <p>
+        <strong>Email:</strong>
+        {{ information.email }}
+    </p>
+
+    <p>
+        <strong>Phone:</strong>
+        {{ information.phone }}
+    </p>
+
+
+    <h2>Skills</h2>
+
+    {% if information.skills %}
+
+        <ul>
+
+        {% for skill in information.skills %}
+
+            <li>{{ skill }}</li>
+
+        {% endfor %}
+
+        </ul>
+
+    {% else %}
+
+        <p>No skills detected.</p>
+
+    {% endif %}
+
+
+    <h2>Education</h2>
+
+    {% if information.education %}
+
+        <ul>
+
+        {% for education in information.education %}
+
+            <li>{{ education }}</li>
+
+        {% endfor %}
+
+        </ul>
+
+    {% else %}
+
+        <p>No education information detected.</p>
+
+    {% endif %}
+
+
+    <h2>Experience</h2>
+
+    <p>
+        {{ information.experience }}
+    </p>
+
+    <br>
+
+    <a href="/">Analyze Another Resume</a>
+
+</div>
+
+</body>
+
+</html>
