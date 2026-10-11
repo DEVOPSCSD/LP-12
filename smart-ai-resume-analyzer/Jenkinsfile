@@ -1,4 +1,5 @@
 
+
 pipeline {
     agent any
 
@@ -12,33 +13,35 @@ pipeline {
 
         stage('Check Project Files') {
             steps {
-                sh '''
-                    test -f app.py
-                    echo "Application file found"
-                    test -d templates
-                    echo "Templates folder found"
-                '''
+                dir('smart-ai-resume-analyzer') {
+                    sh '''
+                        test -f app.py
+                        echo "Application file found"
+                        test -d templates
+                        echo "Templates folder found"
+                    '''
+                }
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh '''
-                    python3 --version
-                    if [ -f requirements.txt ]; then
+                dir('smart-ai-resume-analyzer') {
+                    sh '''
+                        python3 --version
+                        test -f requirements.txt
                         python3 -m pip install -r requirements.txt
-                    else
-                        echo "requirements.txt not found"
-                        exit 1
-                    fi
-                '''
+                    '''
+                }
             }
         }
 
         stage('Validate Python') {
             steps {
-                sh 'python3 -m compileall -q app.py'
-                echo 'Python syntax validation successful'
+                dir('smart-ai-resume-analyzer') {
+                    sh 'python3 -m compileall -q app.py'
+                    echo 'Python syntax validation successful'
+                }
             }
         }
     }
