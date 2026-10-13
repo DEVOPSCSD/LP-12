@@ -1,0 +1,57 @@
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Getting AI Resume Analyzer source code'
+                checkout scm
+            }
+        }
+
+        stage('Check Project Files') {
+            steps {
+                dir('smart-ai-resume-analyzer') {
+                    sh '''
+                        test -f app.py
+                        echo "Application file found"
+                        test -d templates
+                        echo "Templates folder found"
+                    '''
+                }
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                dir('smart-ai-resume-analyzer') {
+                    sh '''
+                        python3 --version
+                        test -f requirements.txt
+                        python3 -m pip install -r requirements.txt
+                    '''
+                }
+            }
+        }
+
+        stage('Validate Python') {
+            steps {
+                dir('smart-ai-resume-analyzer') {
+                    sh 'python3 -m compileall -q app.py'
+                    echo 'Python syntax validation successful'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'AI Resume Analyzer CI pipeline completed!'
+        }
+        failure {
+            echo 'Pipeline failed. Check Console Output.'
+        }
+    }
+}
